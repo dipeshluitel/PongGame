@@ -33,4 +33,10 @@ while game_on:
     # detect peddle bounch
     if (ball.xcor() > 330 and ball.distance(paddle_l) < 50) or (ball.xcor() < -330 and ball.distance(paddle_r) < 50):
         ball.peddle_bounch()
+
+    if ball.xcor() > 390:
+        ball.reset()
+
+    if ball.xcor() < -390:
+        ball.reset()
 screen.exitonclick()

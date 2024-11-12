@@ -24,3 +24,8 @@ class Ball(Turtle):
     def peddle_bounch(self):
         self.x_move = self.x_move*-1
         self.move()
+
+    def reset(self):
+        self.goto(0, 0)
+        self.x_move = self.x_move * -1
+        self.move()
