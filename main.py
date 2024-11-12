@@ -22,9 +22,10 @@ screen.onkeypress(paddle_l.move_down, "Down")
 screen.onkeypress(paddle_r.move_up, "w")
 screen.onkeypress(paddle_r.move_down, "s")
 
+speed = 0.1
 game_on = True
 while game_on:
-    time.sleep(0.1)
+    time.sleep(speed)
     screen.update()
     ball.move()
 
@@ -34,14 +35,18 @@ while game_on:
 
     # detect peddle bounch
     if (ball.xcor() > 330 and ball.distance(paddle_l) < 50) or (ball.xcor() < -330 and ball.distance(paddle_r) < 50):
+        if speed > 0.01:
+            speed = speed - 0.005
         ball.peddle_bounch()
 
     if ball.xcor() > 390:
         ball.reset()
+        speed = 0.1
         score.increment_l()
 
     if ball.xcor() < -390:
         ball.reset()
+        speed = 0.1
         score.increment_r()
 
 screen.exitonclick()
